@@ -1,35 +1,35 @@
 import React from 'react';
+import AnalogDisplay from './AnalogDisplay'
+import DigitalDisplay from './DigitalDisplay'
 
-class Clock extends React.Component{
-    constructor(props){
-        super(props);
-        this.state={date:new Date()};
+class Clock extends React.Component {
+    constructor(props) {
+        super(props)
+        this.launchClock()
+        this.state = {
+            currentTime: (new Date()).toString()
+        }
     }
 
-    componentDidMount() {
-        this.timerID = setInterval(
-            () => this.tick(),
-            1000
-        );
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.timerID);
-    }
-
-    tick() {
-        this.setState({
-            date: new Date()
-        });
+    launchClock() {
+        setInterval(() => {
+                console.log('Updating...')
+                this.setState({
+                    currentTime: (new Date()).toString()
+                })
+            }, 1000
+        )
     }
 
     render() {
+        console.log('Rendering...')
         return (
             <div>
-                <h1>Hello World!</h1>
-                <h2>Now is {this.state.date.toLocaleTimeString()}</h2>
+                <AnalogDisplay time={this.state.currentTime}/>
+                <DigitalDisplay time={this.state.currentTime}/>
             </div>
-        );
+        )
     }
 }
+
 export default Clock;
