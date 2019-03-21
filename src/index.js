@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import './bootstrap.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Clock from './clock/Clock';
@@ -10,6 +9,7 @@ import Button from './button/Button'
 import InputText from "./form/InputText";
 import Account from "./form/Account";
 import ButtonTest from './button/ButtonTest'
+import Content from "./HOC/Content";
 
 ReactDOM.render(<App/>, document.getElementById('root'));
 
@@ -21,11 +21,15 @@ ReactDOM.render(<InputText/>, document.getElementById('inputText'))
 
 ReactDOM.render(<Account/>, document.getElementById('account'))
 
+ReactDOM.render(<Content/>, document.getElementById('hoc'))
+
 ReactDOM.render(<div>
         <ButtonTest buttonLabel="start"/>
         <ButtonTest/>
+        <ButtonTest title={1}/>
         <ButtonTest/>
-        <ButtonTest/>
+        <ButtonTest email="not-a-valid-email"/>
+        <ButtonTest email="534102725@qq.com"/>
     </div>
     , document.getElementById('buttonTest'))
 
